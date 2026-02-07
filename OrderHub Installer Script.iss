@@ -18,10 +18,10 @@ ArchitecturesInstallIn64BitMode=x64compatible
 AllowNoIcons=yes
 #ifdef Beta
     OutputDir=Releases\Beta
-    OutputBaseFilename=OrderHub_{#MyAppVersion}_beta_setup
+    OutputBaseFilename=OrderHub_beta_setup
 #else
     OutputDir=Releases
-    OutputBaseFilename=OrderHub_{#MyAppVersion}_setup
+    OutputBaseFilename=OrderHub_setup
 #endif
 SetupIconFile=Almasajid.ico
 UninstallDisplayIcon={app}\Almasajid.ico
