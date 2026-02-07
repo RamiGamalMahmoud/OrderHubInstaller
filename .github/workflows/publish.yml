@@ -21,6 +21,6 @@ jobs:
         with:
           tag: ${{ github.ref_name }}
           name: OrderHub ${{ github.ref_name }}
-          files: ./Releases/OrderHub${{ github.ref_name }}_setup.exe
+          files: ./Releases/OrderHub_setup.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
