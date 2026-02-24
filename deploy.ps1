@@ -1,5 +1,5 @@
 . .\pac.ps1
-$version = "0.2.2"
+$version = "0.2.3"
 $tag = "$version"
 
 git add .
