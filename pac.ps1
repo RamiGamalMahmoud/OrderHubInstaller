@@ -1,2 +1,27 @@
-dotnet publish -c Release  ..\OrderHub\OrderHub.UI\ -r win-x64  -o .\Publish
-ISCC.exe "OrderHub Installer Script.iss"
+param(
+    [Parameter(Mandatory = $true)]
+    [string]$Version
+)
+
+$ErrorActionPreference = "Stop"
+
+Write-Host "Publishing OrderHub $Version..." -ForegroundColor Cyan
+
+dotnet publish ..\OrderHub\OrderHub.UI\ `
+    -c Release `
+    -r win-x64 `
+    -o .\Publish
+
+if ($LASTEXITCODE -ne 0) {
+    throw "dotnet publish failed."
+}
+
+Write-Host "Building installer..." -ForegroundColor Cyan
+
+& ISCC.exe "/DMyAppVersion=$Version" "OrderHub Installer Script.iss"
+
+if ($LASTEXITCODE -ne 0) {
+    throw "Inno Setup failed."
+}
+
+Write-Host "Package created successfully." -ForegroundColor Green
