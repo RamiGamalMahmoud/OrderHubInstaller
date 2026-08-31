@@ -13,6 +13,7 @@ dotnet publish ..\OrderHub\OrderHub.UI\ `
     -o .\Publish
 
 if ($LASTEXITCODE -ne 0) {
+    Write-Host "dotnet publish failed with exit code $LASTEXITCODE." -ForegroundColor Red
     throw "dotnet publish failed."
 }
 
@@ -21,6 +22,7 @@ Write-Host "Building installer..." -ForegroundColor Cyan
 & ISCC.exe "/DMyAppVersion=$Version" "OrderHub Installer Script.iss"
 
 if ($LASTEXITCODE -ne 0) {
+    Write-Host "Inno Setup failed with exit code $LASTEXITCODE." -ForegroundColor Red
     throw "Inno Setup failed."
 }
 
